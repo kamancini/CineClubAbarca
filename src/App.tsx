@@ -1,19 +1,25 @@
-function App() {
-  return (
-    <main className="min-h-screen bg-background flex items-center justify-center px-6">
-      <div className="text-center">
-        <p className="eyebrow">Ñuñoa, Santiago</p>
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-        <h1 className="font-serif text-6xl md:text-8xl text-paper mt-5">
-          Cine Club <span className="italic text-ochre">Abarca</span>
-        </h1>
+import Home from "./pages/Home";
+import Proyecto from "./pages/Proyecto";
+import Funciones from "./pages/Funciones";
+import Articulos from "./pages/Articulos";
+import Materiales from "./pages/Materiales";
+import Contacto from "./pages/Contacto";
+import NotFound from "./pages/NotFound";
 
-        <p className="font-sans text-lg text-muted-foreground mt-6">
-          Cine, conversación y comunidad.
-        </p>
-      </div>
-    </main>
-  );
-}
+const App = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/proyecto" element={<Proyecto />} />
+      <Route path="/funciones" element={<Funciones />} />
+      <Route path="/articulos" element={<Articulos />} />
+      <Route path="/materiales" element={<Materiales />} />
+      <Route path="/contacto" element={<Contacto />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  </BrowserRouter>
+);
 
 export default App;
