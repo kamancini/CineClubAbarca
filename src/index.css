@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Instrument Serif", serif;
+  --font-sans: "Jost", sans-serif;
+
+  --color-background: hsl(28 60% 96%);
+  --color-foreground: hsl(20 22% 20%);
+  --color-card: hsl(30 50% 98%);
+  --color-muted-foreground: hsl(20 12% 40%);
+  --color-border: hsl(26 28% 85%);
+
+  --color-ochre: hsl(14 48% 47%);
+  --color-ochre-soft: hsl(14 44% 39%);
+  --color-paper: hsl(20 24% 17%);
+  --color-ink: hsl(30 60% 97%);
+}
+
+* {
+  box-sizing: border-box;
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+.eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--color-ochre-soft);
+}
