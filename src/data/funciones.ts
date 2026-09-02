@@ -10,6 +10,7 @@ export interface Funcion {
   hora: string;
   lugar: string;
   nota: string;
+  afiche: string;
   inscripcionAbierta: boolean;
   formularioUrl: string;
 }

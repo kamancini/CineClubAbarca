@@ -9,8 +9,7 @@ content:
     path: src/data/funciones.json
     format: json
     list: true
-    operations:
-      delete: false
+
     fields:
       - name: id
         label: Identificador
@@ -55,6 +54,12 @@ content:
       - name: nota
         label: Descripción o nota
         type: text
+
+      - name: afiche
+        label: Afiche
+        type: image
+        options:
+          extensions: [jpg, jpeg, png, webp]
 
       - name: formularioUrl
         label: Google Form

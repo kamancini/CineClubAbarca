@@ -1,14 +1,16 @@
 [
   {
-    "id": "Orlando",
+    "id": "orlando",
     "ciclo": "Cine Club de Lectura",
     "titulo": "Orlando",
     "director": "Sally Potter",
     "anio": 1992,
-    "fecha": "Fecha por confirmar",
+    "fecha": "Por confirmar",
     "hora": "16:00",
     "lugar": "Tegualda 1871, Ñuñoa",
-    "formularioUrl": "https://forms.gle/SozjvtL2WaQYXn7Q8",
-    "inscripcionAbierta": true
+    "nota": "",
+    "afiche": "",
+    "inscripcionAbierta": true,
+    "formularioUrl": "https://forms.gle/SozjvtL2WaQYXn7Q8"
   }
 ]

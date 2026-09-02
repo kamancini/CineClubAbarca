@@ -18,10 +18,10 @@ const equipo = [
     nombre: "Macarena Farías",
     rol: "Diseñadora",
   },
-  {nombre: "Vicente Rodríguez",
+  {
+    nombre: "Vicente Rodríguez",
     rol: "Moderador Cine Club de Lectura",
-}
-  
+  },
 ];
 
 const Proyecto = () => (
@@ -47,36 +47,46 @@ const Proyecto = () => (
         </div>
       </section>
 
-      {/* Historia */}
+      {/* Historia + imagen */}
       <section className="px-6 md:px-10 py-20 md:py-28">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1.05fr_0.95fr] gap-14 items-start">
           <div>
             <p className="eyebrow">Nuestra historia</p>
 
             <h2 className="font-serif text-4xl md:text-5xl text-paper mt-4 leading-tight">
               Del encuentro doméstico al cineclub
             </h2>
+
+            <div className="space-y-6 font-sans text-base text-muted-foreground leading-relaxed mt-8">
+              <p>
+                Cine Club Abarca nace como un homenaje a la Casa Taller del
+                pintor Agustín Abarca, un espacio que durante años acogió
+                tertulias y encuentros en torno al arte, la literatura y la
+                música.
+              </p>
+
+              <p>
+                Después de años de cineclubes informales y experiencias
+                compartidas, la iniciativa se formalizó en 2025 con el propósito
+                de continuar esa tradición de encuentro y abrir un espacio
+                dedicado al cine y la conversación.
+              </p>
+
+              <p>
+                El proyecto reúne seis años de trabajo colaborativo entre la
+                investigación estética y la producción audiovisual, poniendo el
+                cine al centro de una experiencia cercana y comunitaria.
+              </p>
+            </div>
           </div>
 
-          <div className="space-y-6 font-sans text-base text-muted-foreground leading-relaxed">
-            <p>
-              Cine Club Abarca nace como un homenaje a la Casa Taller del pintor
-              Agustín Abarca, un espacio que durante años acogió tertulias y
-              encuentros en torno al arte, la literatura y la música.
-            </p>
-
-            <p>
-              Después de años de cineclubes informales y experiencias
-              compartidas, la iniciativa se formalizó en 2025 con el propósito
-              de continuar esa tradición de encuentro y abrir un espacio
-              dedicado al cine y la conversación.
-            </p>
-
-            <p>
-              El proyecto reúne seis años de trabajo colaborativo entre la
-              investigación estética y la producción audiovisual, poniendo el
-              cine al centro de una experiencia cercana y comunitaria.
-            </p>
+          <div>
+            <img
+              src="/images/proyecto-casa.jpg"
+              alt="Conversación en la entrada de la casa de Cine Club Abarca"
+              className="w-full aspect-[4/5] object-cover"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
@@ -120,8 +130,8 @@ const Proyecto = () => (
               </p>
 
               <p className="font-sans text-sm text-muted-foreground mt-4 leading-relaxed">
-                También leemos y comentamos obras literarias antes de encontrarnos
-                con sus adaptaciones cinematográficas.
+                También leemos y comentamos obras literarias antes de
+                encontrarnos con sus adaptaciones cinematográficas.
               </p>
             </div>
           </div>
@@ -137,7 +147,7 @@ const Proyecto = () => (
             El equipo
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {equipo.map((persona) => (
               <div
                 key={persona.nombre}
