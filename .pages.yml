@@ -1,0 +1,66 @@
+media:
+  input: public/uploads
+  output: /uploads
+
+content:
+  - name: funciones
+    label: Funciones
+    type: file
+    path: src/data/funciones.json
+    format: json
+    list: true
+    operations:
+      delete: false
+    fields:
+      - name: id
+        label: Identificador
+        type: string
+        required: true
+
+      - name: ciclo
+        label: Ciclo
+        type: string
+        required: true
+
+      - name: titulo
+        label: Película
+        type: string
+        required: true
+
+      - name: director
+        label: Director/a
+        type: string
+        required: true
+
+      - name: anio
+        label: Año
+        type: number
+        required: true
+
+      - name: fecha
+        label: Fecha
+        type: string
+        required: true
+
+      - name: hora
+        label: Hora
+        type: string
+        required: true
+
+      - name: lugar
+        label: Lugar
+        type: string
+        required: true
+
+      - name: nota
+        label: Descripción o nota
+        type: text
+
+      - name: formularioUrl
+        label: Google Form
+        type: string
+
+      - name: inscripcionAbierta
+        label: Inscripción abierta
+        type: boolean
+        default: true

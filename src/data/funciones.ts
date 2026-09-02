@@ -1,3 +1,5 @@
+import datosFunciones from "./funciones.json";
+
 export interface Funcion {
   id: string;
   ciclo: string;
@@ -12,18 +14,4 @@ export interface Funcion {
   formularioUrl: string;
 }
 
-export const funciones: Funcion[] = [
-  {
-    id: "orlando",
-    ciclo: "Cine Club de Lectura",
-    titulo: "Orlando",
-    director: "Sally Potter",
-    anio: 1992,
-    fecha: "Por confirmar",
-    hora: "16:00",
-    lugar: "Tegualda 1871, Ñuñoa",
-    nota: "",
-    inscripcionAbierta: true,
-    formularioUrl: "https://forms.gle/SozjvtL2WaQYXn7Q8",
-  },
-];
+export const funciones = datosFunciones as Funcion[];
