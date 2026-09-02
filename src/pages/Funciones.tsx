@@ -50,7 +50,7 @@ const Funciones = () => (
               {funciones.map((funcion) => (
                 <article
                   key={funcion.id}
-                  className="grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr_220px] gap-8 md:gap-12 py-12 items-start"
+                  className="grid grid-cols-1 md:grid-cols-[0.75fr_1.15fr_280px] gap-8 md:gap-12 py-12 items-start"
                 >
                   {/* Fecha y ciclo */}
                   <div>
@@ -108,22 +108,22 @@ const Funciones = () => (
                   </div>
 
                   {/* Afiche */}
-                  <div>
+                    <div>
                     {funcion.afiche ? (
-                      <img
+                        <img
                         src={funcion.afiche}
                         alt={`Afiche de ${funcion.titulo}`}
-                        className="w-full aspect-[2/3] object-cover"
+                        className="w-full aspect-[3/4] object-cover"
                         loading="lazy"
-                      />
+                        />
                     ) : (
-                      <div className="w-full aspect-[2/3] border border-border flex items-center justify-center">
+                        <div className="w-full aspect-[3/4] border border-border flex items-center justify-center">
                         <p className="font-sans text-xs text-muted-foreground text-center px-4">
-                          Afiche próximamente
+                            Afiche próximamente
                         </p>
-                      </div>
+                        </div>
                     )}
-                  </div>
+                    </div>
                 </article>
               ))}
             </div>
