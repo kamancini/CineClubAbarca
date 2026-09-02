@@ -1,6 +1,6 @@
 [
   {
-    "id": "orlando",
+    "id": "Orlando",
     "ciclo": "Cine Club de Lectura",
     "titulo": "Orlando",
     "director": "Sally Potter",
@@ -8,8 +8,7 @@
     "fecha": "Por confirmar",
     "hora": "16:00",
     "lugar": "Tegualda 1871, Ñuñoa",
-    "nota": "",
-    "inscripcionAbierta": true,
-    "formularioUrl": "https://forms.gle/SozjvtL2WaQYXn7Q8"
+    "formularioUrl": "https://forms.gle/SozjvtL2WaQYXn7Q8",
+    "inscripcionAbierta": true
   }
 ]
