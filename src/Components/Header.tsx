@@ -27,6 +27,7 @@ const Header = () => {
           </span>
         </Link>
 
+        {/* Navegación escritorio */}
         <nav className="hidden md:flex items-center gap-7">
           {links.map((link) => (
             <Link
@@ -43,24 +44,30 @@ const Header = () => {
           ))}
         </nav>
 
+        {/* Botón menú móvil */}
         <button
-          className="md:hidden text-paper"
+          className="md:hidden bg-ochre text-ink w-11 h-11 flex items-center justify-center rounded-full shadow-sm hover:bg-ochre-soft transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Abrir menú"
+          aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
+      {/* Menú móvil desplegable */}
       {mobileOpen && (
-        <nav className="md:hidden border-t border-border px-6 py-5 bg-background">
-          <div className="space-y-4">
+        <nav className="md:hidden bg-ochre px-6 py-7 shadow-lg">
+          <div className="space-y-5">
             {links.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 onClick={() => setMobileOpen(false)}
-                className="block font-sans text-sm uppercase tracking-[0.14em] text-paper/80"
+                className={`block font-sans text-sm uppercase tracking-[0.14em] transition-colors ${
+                  location.pathname === link.to
+                    ? "text-ink"
+                    : "text-ink/85 hover:text-white"
+                }`}
               >
                 {link.label}
               </Link>
