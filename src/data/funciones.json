@@ -1,5 +1,16 @@
 [
   {
+    "id": "Aniversario CCA",
+    "ciclo": "Cumpleaños",
+    "titulo": "Ustedes",
+    "director": "Nosotres",
+    "anio": 2026,
+    "fecha": "5 de septiembre",
+    "hora": "19:00 hrs",
+    "lugar": "Hamburgo 36, Ñuñoa",
+    "inscripcionAbierta": false
+  },
+  {
     "id": "orlando",
     "ciclo": "Cine Club de Lectura",
     "titulo": "Orlando",
