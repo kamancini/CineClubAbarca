@@ -8,7 +8,7 @@ const Materiales = () => (
 
     <main>
       {/* Encabezado */}
-      <section className="px-6 md:px-10 py-20 md:py-28 border-b border-border">
+      <section className="px-6 md:px-10 py-20 md:py-28">
         <div className="max-w-6xl mx-auto">
           <p className="eyebrow">Materiales</p>
 
@@ -23,44 +23,56 @@ const Materiales = () => (
         </div>
       </section>
 
-      {/* Materiales + imagen */}
-      <section className="px-6 md:px-10 py-20 md:py-28">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
-          <div>
-            <p className="eyebrow">Biblioteca digital</p>
+      {/* Biblioteca digital */}
+      <section className="px-6 md:px-10 pb-24 md:pb-36">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-[1.15fr_0.85fr] items-center">
+            {/* Imagen */}
+            <div className="relative">
+              <img
+                src="/images/fanzine-encuentro.jpg"
+                alt="Publicaciones y materiales compartidos durante una actividad de Cine Club Abarca"
+                className="w-full aspect-[4/3] md:aspect-[5/4] object-cover"
+                loading="lazy"
+              />
+            </div>
 
-            <h2 className="font-serif text-4xl md:text-5xl text-paper mt-4 leading-tight">
-              Todos nuestros materiales en un solo lugar
-            </h2>
+            {/* Papel superpuesto */}
+            <div className="paper-wrap paper-tilt-right relative z-10 mt-[-2rem] md:mt-0 md:-ml-16">
+              <div className="paper-sheet paper-sheet-large">
+                <p className="eyebrow">Biblioteca digital</p>
 
-            <p className="font-sans text-base text-muted-foreground mt-6 leading-relaxed max-w-xl">
-              Puedes acceder a nuestra carpeta de Google Drive para consultar y
-              descargar los materiales disponibles del Cine Club Abarca.
-            </p>
+                <h2 className="font-serif text-4xl md:text-5xl text-paper mt-4 leading-tight">
+                  Todos nuestros materiales en un solo lugar
+                </h2>
 
-            <a
-              href="https://drive.google.com/drive/folders/1MiknBBE_hYdrKLfV8ydDCtJ0ZLBfsaYU?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-8 bg-ochre text-ink px-8 py-4 font-sans text-[11px] tracking-[0.2em] uppercase hover:bg-ochre-soft transition-colors"
-            >
-              Explorar materiales
-              <ExternalLink size={15} />
-            </a>
+                <p className="font-sans text-base text-muted-foreground mt-6 leading-relaxed max-w-xl">
+                  Puedes acceder a nuestra carpeta de Google Drive para
+                  consultar y descargar los materiales disponibles del Cine
+                  Club Abarca.
+                </p>
 
-            <p className="font-sans text-xs text-muted-foreground mt-4">
-              La carpeta se abrirá en una nueva pestaña de Google Drive.
-            </p>
+                <a
+                  href="https://drive.google.com/drive/folders/1MiknBBE_hYdrKLfV8ydDCtJ0ZLBfsaYU?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 mt-8 bg-ochre text-ink px-8 py-4 font-sans text-[11px] tracking-[0.2em] uppercase hover:bg-ochre-soft transition-colors"
+                >
+                  Explorar materiales
+                  <ExternalLink size={15} />
+                </a>
+
+                <p className="font-sans text-xs text-muted-foreground mt-4">
+                  La carpeta se abrirá en una nueva pestaña de Google Drive.
+                </p>
+              </div>
+            </div>
           </div>
-
-          <img
-            src="/images/fanzine-encuentro.jpg"
-            alt="Publicaciones y materiales compartidos durante una actividad de Cine Club Abarca"
-            className="w-full aspect-[4/3] object-cover"
-            loading="lazy"
-          />
         </div>
       </section>
+
+      {/* Cierre visual */}
+      <section className="bg-ochre h-10 md:h-14" />
     </main>
 
     <Footer />

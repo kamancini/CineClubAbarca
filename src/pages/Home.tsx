@@ -1,28 +1,9 @@
 import { Link } from "react-router-dom";
+import { ExternalLink } from "lucide-react";
+
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { funciones } from "../data/funciones";
-
-const pilares = [
-  {
-    numero: "01",
-    titulo: "Ciclos temáticos",
-    texto:
-      "Programamos ciclos con funciones guiadas, donde cada película abre preguntas que seguimos conversando después.",
-  },
-  {
-    numero: "02",
-    titulo: "Voces de la comunidad",
-    texto:
-      "Parte de nuestra programación nace de películas sugeridas por quienes participan del cineclub.",
-  },
-  {
-    numero: "03",
-    titulo: "Cine y literatura",
-    texto:
-      "Leemos y comentamos obras literarias antes de encontrarnos con sus adaptaciones cinematográficas.",
-  },
-];
 
 const Home = () => {
   const proximaFuncion = funciones[0];
@@ -32,223 +13,253 @@ const Home = () => {
       <Header />
 
       <main>
-        {/* Portada */}
-<section className="relative min-h-[88vh] flex items-end overflow-hidden">
-  <img
-    src="/images/hero-cineclub.jpg"
-    alt="Encuentro de Cine Club Abarca en una casa de Ñuñoa"
-    className="absolute inset-0 w-full h-full object-cover"
-  />
+        {/* HERO */}
+        <section className="relative min-h-[82vh] flex items-end overflow-hidden">
+          <img
+            src="/images/hero-cineclub.jpg"
+            alt="Encuentro de Cine Club Abarca"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
 
-  {/* Sombra suave general */}
-  <div className="absolute inset-0 bg-black/15" />
+          <div className="absolute inset-0 bg-black/15" />
 
-  {/* Degradado oscuro concentrado abajo */}
-  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
 
-  <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-10 pb-20 md:pb-28 pt-40">
-    <p className="font-sans text-[11px] uppercase tracking-[0.28em] text-white/75">
-      Ñuñoa, Santiago · Entrada liberada
-    </p>
-
-    <h1 className="font-serif text-6xl md:text-8xl text-white mt-5 max-w-4xl leading-[0.95]">
-      El cine como excusa para{" "}
-      <span className="italic text-[#e8ad98]">
-        encontrarnos
-      </span>
-    </h1>
-
-    <p className="font-sans text-lg md:text-xl text-white/85 mt-7 max-w-2xl leading-relaxed">
-      Un espacio íntimo de encuentro en torno al cine, diseñado para
-      compartir opiniones, sensibilidades y vivencias personales.
-    </p>
-
-    <div className="flex flex-wrap gap-4 mt-10">
-      <Link
-        to="/funciones"
-        className="bg-ochre text-ink px-7 py-4 font-sans text-[11px] tracking-[0.18em] uppercase hover:bg-ochre-soft transition-colors"
-      >
-        Inscribirme a una función
-      </Link>
-
-      <Link
-        to="/proyecto"
-        className="border border-white/60 text-white px-7 py-4 font-sans text-[11px] tracking-[0.18em] uppercase hover:bg-white hover:text-paper transition-colors"
-      >
-        Conocer el proyecto
-      </Link>
-    </div>
-  </div>
-</section>
-
-        {/* Qué hacemos */}
-        <section className="px-6 md:px-10 py-20 md:py-28">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_0.9fr] gap-14 items-start">
-              <div>
-                <p className="eyebrow">Qué hacemos</p>
-
-                <h2 className="font-serif text-4xl md:text-6xl text-paper mt-4 leading-tight">
-                  Mediación cinematográfica en un entorno cercano
-                </h2>
-
-                <p className="font-sans text-base md:text-lg text-muted-foreground mt-6 max-w-2xl leading-relaxed">
-                  Creamos espacios para el diálogo y el intercambio de puntos
-                  de vista, donde la conversación importa tanto como la película.
-                </p>
-              </div>
-
-              <img
-                src="/images/comunidad-patio.jpg"
-                alt="Participantes del Cine Club Abarca reunidos en torno a una mesa"
-                className="w-full aspect-[4/3] object-cover"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-              {pilares.map((pilar) => (
-                <article
-                  key={pilar.numero}
-                  className="border-t border-border pt-6"
-                >
-                  <p className="font-sans text-xs tracking-[0.18em] text-ochre">
-                    {pilar.numero}
-                  </p>
-
-                  <h3 className="font-serif text-3xl text-paper mt-5">
-                    {pilar.titulo}
-                  </h3>
-
-                  <p className="font-sans text-sm text-muted-foreground mt-4 leading-relaxed">
-                    {pilar.texto}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Por qué existimos */}
-        <section className="bg-card border-y border-border px-6 md:px-10 py-20 md:py-28">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
-            <img
-              src="/images/conversacion-cineclub.jpg"
-              alt="Conversación después de una función de Cine Club Abarca"
-              className="w-full aspect-[4/3] object-cover"
-              loading="lazy"
-            />
-
-            <div>
-              <p className="eyebrow">Por qué existimos</p>
-
-              <h2 className="font-serif text-4xl md:text-6xl text-paper mt-4 leading-tight">
-                Reivindicar el encuentro presencial
-              </h2>
-
-              <p className="font-sans text-base md:text-lg text-muted-foreground mt-6 leading-relaxed">
-                Buscamos fortalecer el tejido comunitario en un espacio seguro,
-                acogedor y gratuito. El cine y la conversación son nuestro punto
-                de partida para encontrarnos, compartir experiencias y conectar
-                con otras personas.
+          <div className="relative z-10 w-full px-6 md:px-10 pb-16 md:pb-24 pt-32">
+            <div className="max-w-6xl mx-auto">
+              <p className="font-sans text-xs md:text-sm uppercase tracking-[0.18em] text-white/75">
+                Cine · conversación · comunidad
               </p>
 
-              <Link
-                to="/proyecto"
-                className="inline-block mt-8 font-sans text-xs uppercase tracking-[0.18em] text-ochre hover:underline underline-offset-4"
-              >
-                Conocer nuestra historia →
-              </Link>
+              <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] text-white mt-5 max-w-4xl">
+                Un espacio para
+                <br />
+                <span className="text-[#e8ad98] italic">
+                  encontrarnos
+                </span>
+                <br />
+                alrededor del cine
+              </h1>
+
+              <p className="font-sans text-base md:text-lg text-white/85 leading-relaxed max-w-2xl mt-7">
+                Un espacio íntimo de encuentro en torno al cine, diseñado para
+                compartir opiniones, sensibilidades y vivencias personales.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 mt-9">
+                <Link
+                  to="/funciones"
+                  className="inline-flex justify-center items-center bg-ochre text-ink px-6 py-3 font-sans text-xs uppercase tracking-[0.14em] hover:bg-ochre-soft transition-colors"
+                >
+                  Inscribirme a una función
+                </Link>
+
+                <Link
+                  to="/proyecto"
+                  className="inline-flex justify-center items-center border border-white/70 text-white px-6 py-3 font-sans text-xs uppercase tracking-[0.14em] hover:bg-white hover:text-paper transition-colors"
+                >
+                  Conocer el proyecto
+                </Link>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Próxima función */}
-        {proximaFuncion && (
-          <section className="px-6 md:px-10 py-20 md:py-28">
-            <div className="max-w-6xl mx-auto">
-              <p className="eyebrow">Próxima función</p>
+        {/* QUÉ HACEMOS */}
+        <section className="px-6 md:px-10 py-24 md:py-36">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] items-center">
+              <div className="relative">
+                <img
+                  src="/images/comunidad-patio.jpg"
+                  alt="Encuentro comunitario de Cine Club Abarca"
+                  className="w-full aspect-[4/3] object-cover"
+                  loading="lazy"
+                />
+              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-14 mt-8 items-center">
-                <div>
-                  <p className="font-sans text-xs uppercase tracking-[0.18em] text-ochre">
-                    {proximaFuncion.ciclo}
+              <div className="paper-wrap paper-tilt-right md:-ml-16 mt-[-2rem] md:mt-0 relative z-10">
+                <div className="paper-sheet">
+                  <p className="font-sans text-xs uppercase tracking-[0.16em] text-ochre">
+                    Qué hacemos
                   </p>
 
-                  <h2 className="font-serif text-5xl md:text-7xl text-paper mt-4">
-                    {proximaFuncion.titulo}
+                  <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-paper mt-4 leading-[1.02]">
+                    Ver cine también es conversar
                   </h2>
 
-                  <p className="font-sans text-muted-foreground mt-3">
-                    {proximaFuncion.director}, {proximaFuncion.anio}
+                  <p className="font-sans text-base text-paper/75 leading-relaxed mt-6">
+                    Organizamos ciclos temáticos con funciones guiadas, creando
+                    un espacio cercano y seguro para conversar sobre las
+                    películas desde nuestras propias experiencias.
                   </p>
 
-                  <div className="mt-8">
-                    <p className="font-sans text-paper">
-                      {proximaFuncion.fecha}
-                    </p>
-
-                    <p className="font-sans text-sm text-muted-foreground mt-2">
-                      {proximaFuncion.hora} h · {proximaFuncion.lugar}
-                    </p>
-                  </div>
-
-                  {proximaFuncion.nota && (
-                    <p className="font-sans text-sm text-muted-foreground mt-6 leading-relaxed">
-                      {proximaFuncion.nota}
-                    </p>
-                  )}
-
-                  <p className="font-sans text-[11px] uppercase tracking-[0.18em] text-muted-foreground mt-8">
-                    Cupos limitados
+                  <p className="font-sans text-base text-paper/75 leading-relaxed mt-4">
+                    La programación también puede surgir de películas propuestas
+                    por la comunidad y de adaptaciones de obras literarias
+                    leídas y comentadas colectivamente.
                   </p>
 
-                  {proximaFuncion.inscripcionAbierta ? (
-                    <a
-                      href={proximaFuncion.formularioUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block mt-4 bg-ochre text-ink px-8 py-4 font-sans text-[11px] tracking-[0.2em] uppercase hover:bg-ochre-soft transition-colors"
-                    >
-                      Inscribirme
-                    </a>
-                  ) : (
-                    <span className="inline-block mt-4 border border-border text-muted-foreground px-8 py-4 font-sans text-[11px] tracking-[0.2em] uppercase">
-                      Inscripciones cerradas
-                    </span>
-                  )}
-
-                  <div>
-                    <Link
-                      to="/funciones"
-                      className="inline-block mt-6 font-sans text-xs text-ochre hover:underline underline-offset-4"
-                    >
-                      Ver programación →
-                    </Link>
-                  </div>
+                  <Link
+                    to="/proyecto"
+                    className="inline-block mt-7 font-sans text-xs uppercase tracking-[0.14em] text-ochre hover:text-ochre-soft transition-colors"
+                  >
+                    Conocer más →
+                  </Link>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
+        {/* POR QUÉ EXISTIMOS */}
+        <section className="px-6 md:px-10 py-24 md:py-36 bg-card">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] items-center">
+              <div className="paper-wrap paper-tilt-left md:-mr-16 relative z-10 order-2 md:order-1 mt-[-2rem] md:mt-0">
+                <div className="paper-sheet">
+                  <p className="font-sans text-xs uppercase tracking-[0.16em] text-ochre">
+                    Por qué existimos
+                  </p>
+
+                  <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-paper mt-4 leading-[1.02]">
+                    Recuperar el encuentro presencial
+                  </h2>
+
+                  <p className="font-sans text-base text-paper/75 leading-relaxed mt-6">
+                    Cine Club Abarca busca fortalecer el tejido comunitario a
+                    través de un espacio seguro, acogedor y gratuito.
+                  </p>
+
+                  <p className="font-sans text-base text-paper/75 leading-relaxed mt-4">
+                    El cine y la conversación funcionan como un punto de partida
+                    para volver a encontrarnos presencialmente alrededor de
+                    intereses compartidos.
+                  </p>
+                </div>
+              </div>
+
+              <div className="order-1 md:order-2">
                 <img
-                  src="/images/funcion-cine.jpg"
-                  alt="Público durante una función de Cine Club Abarca"
+                  src="/images/conversacion-cineclub.jpg"
+                  alt="Conversación durante un encuentro de Cine Club Abarca"
                   className="w-full aspect-[4/3] object-cover"
                   loading="lazy"
                 />
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* PRÓXIMA FUNCIÓN */}
+        {proximaFuncion && (
+          <section className="px-6 md:px-10 py-24 md:py-36">
+            <div className="max-w-6xl mx-auto">
+              <div className="mb-10">
+                <p className="font-sans text-xs uppercase tracking-[0.18em] text-ochre">
+                  Próxima función
+                </p>
+              </div>
+
+              {/* Imagen horizontal */}
+              <div className="relative">
+                <img
+                  src="/images/funcion-cine.jpg"
+                  alt="Función de Cine Club Abarca"
+                  className="w-full aspect-[16/8] md:aspect-[16/6] object-cover"
+                  loading="lazy"
+                />
+
+                <div className="absolute inset-0 bg-black/15" />
+
+                {/* Papel superpuesto */}
+                <div className="relative z-10 -mt-10 mx-4 md:absolute md:left-10 md:bottom-[-5rem] md:mt-0 md:mx-0 md:max-w-xl">
+                  <div className="paper-wrap paper-tilt-right">
+                    <div className="paper-sheet paper-sheet-large">
+                      <p className="font-sans text-xs uppercase tracking-[0.16em] text-ochre">
+                        {proximaFuncion.ciclo}
+                      </p>
+
+                      <h2 className="font-serif text-5xl md:text-7xl text-paper mt-3 leading-none">
+                        {proximaFuncion.titulo}
+                      </h2>
+
+                      <p className="font-sans text-base text-paper/70 mt-5">
+                        {proximaFuncion.director} · {proximaFuncion.anio}
+                      </p>
+
+                      <div className="mt-7 space-y-2 font-sans text-sm text-paper/70">
+                        <p>
+                          <strong className="text-paper font-medium">
+                            Fecha:
+                          </strong>{" "}
+                          {proximaFuncion.fecha}
+                        </p>
+
+                        <p>
+                          <strong className="text-paper font-medium">
+                            Hora:
+                          </strong>{" "}
+                          {proximaFuncion.hora}
+                        </p>
+
+                        <p>
+                          <strong className="text-paper font-medium">
+                            Lugar:
+                          </strong>{" "}
+                          {proximaFuncion.lugar}
+                        </p>
+
+                        {proximaFuncion.nota && (
+                          <p>{proximaFuncion.nota}</p>
+                        )}
+                      </div>
+
+                      {proximaFuncion.inscripcionAbierta ? (
+                        <a
+                          href={proximaFuncion.formularioUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 mt-8 bg-ochre text-ink px-6 py-3 font-sans text-xs uppercase tracking-[0.14em] hover:bg-ochre-soft transition-colors"
+                        >
+                          Inscribirme
+                          <ExternalLink size={14} />
+                        </a>
+                      ) : (
+                        <p className="font-sans text-sm text-paper/60 mt-8">
+                          Inscripciones cerradas
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Espacio para el papel superpuesto en escritorio */}
+              <div className="hidden md:block h-24" />
+            </div>
           </section>
         )}
 
-        {/* Cierre */}
+        {/* CTA FINAL OCRE */}
         <section className="bg-ochre px-6 md:px-10 py-20 md:py-28">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="font-serif text-4xl md:text-6xl text-ink leading-tight">
-              Las películas son el hilo conductor para conocernos y conversar.
+            <p className="font-sans text-xs uppercase tracking-[0.18em] text-ink/75">
+              Nos encontramos en torno al cine
+            </p>
+
+            <h2 className="font-serif text-4xl md:text-6xl text-ink mt-5">
+              Ven a compartir la próxima función
+            </h2>
+
+            <p className="font-sans text-base text-ink/80 leading-relaxed mt-6 max-w-2xl mx-auto">
+              Revisa nuestra programación y encuentra la próxima oportunidad
+              para encontrarnos, ver una película y conversar.
             </p>
 
             <Link
               to="/funciones"
-              className="inline-block mt-10 border border-ink/50 text-ink px-8 py-4 font-sans text-[11px] tracking-[0.2em] uppercase hover:bg-ink hover:text-ochre transition-colors"
+              className="inline-flex mt-8 bg-paper text-ink px-7 py-3 font-sans text-xs uppercase tracking-[0.14em] hover:opacity-90 transition-opacity"
             >
               Ver próximas funciones
             </Link>
