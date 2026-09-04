@@ -16,15 +16,18 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95">
-      <div className="max-w-6xl mx-auto px-6 md:px-10 py-5 flex items-center justify-between">
-        <Link to="/" className="flex items-baseline gap-2">
-          <span className="font-serif text-2xl text-paper">
-            Cine Club
-          </span>
-
-          <span className="font-serif italic text-2xl text-ochre">
-            Abarca
-          </span>
+      <div className="max-w-6xl mx-auto px-6 md:px-10 py-3 flex items-center justify-between">
+        {/* Logo */}
+        <Link
+          to="/"
+          className="flex items-center shrink-0"
+          aria-label="Ir al inicio"
+        >
+          <img
+            src="/images/logo-cineclub.png"
+            alt="Cine Club Abarca"
+            className="h-10 md:h-12 w-auto object-contain"
+          />
         </Link>
 
         {/* Navegación escritorio */}
@@ -54,7 +57,7 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Menú móvil desplegable */}
+      {/* Menú móvil */}
       {mobileOpen && (
         <nav className="md:hidden bg-ochre px-6 py-7 shadow-lg">
           <div className="space-y-5">

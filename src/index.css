@@ -1,8 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400;500;600&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Instrument Serif", serif;
+  --font-serif: "IM Fell English", serif;
   --font-sans: "Jost", sans-serif;
 
   --color-background: hsl(28 60% 96%);
@@ -40,4 +39,13 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.28em;
   color: var(--color-ochre-soft);
+}
+
+.font-serif,
+h1,
+h2,
+h3 {
+  font-family: "IM Fell English", serif !important;
+  font-weight: 400 !important;
+  font-synthesis: none;
 }
