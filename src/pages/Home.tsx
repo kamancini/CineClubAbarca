@@ -172,7 +172,7 @@ const Home = () => {
 
                 <div className="absolute inset-0 bg-black/15" />
 
-                <div className="relative z-10 -mt-10 mx-4 md:absolute md:left-10 md:bottom-[-5rem] md:mt-0 md:mx-0 md:max-w-xl">
+                <div className="relative z-10 -mt-10 mx-4 md:absolute md:right-10 md:bottom-[-5rem] md:mt-0 md:mx-0 md:max-w-xl">
                   <div className="paper-wrap paper-tilt-right">
                     <div className="paper-sheet paper-sheet-large">
                       <p className="font-sans text-xs uppercase tracking-[0.16em] text-ochre">
