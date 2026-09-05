@@ -1,3 +1,4 @@
+import { chromium } from "playwright";
 import fs from "node:fs/promises";
 
 const baseUrl = "https://cineclubabarca.substack.com";
@@ -8,31 +9,53 @@ const limpiarTexto = (texto = "") =>
     .replace(/\s+/g, " ")
     .trim();
 
-async function obtenerPublicaciones() {
+const browser = await chromium.launch({
+  headless: true,
+});
+
+try {
+  const page = await browser.newPage({
+    userAgent:
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
+      "(KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  });
+
+  /*
+   * Primero abrimos la publicación como lo haría una persona.
+   * Esto evita hacer la petición directamente desde Node.
+   */
+  await page.goto(`${baseUrl}/archive`, {
+    waitUntil: "domcontentloaded",
+    timeout: 60000,
+  });
+
   const publicaciones = [];
 
   let offset = 0;
   const limit = 12;
 
   while (true) {
-    const url =
-      `${baseUrl}/api/v1/archive` +
-      `?sort=new&search=&offset=${offset}&limit=${limit}`;
+    const pagina = await page.evaluate(
+      async ({ offset, limit }) => {
+        const response = await fetch(
+          `/api/v1/archive?sort=new&search=&offset=${offset}&limit=${limit}`,
+          {
+            headers: {
+              Accept: "application/json",
+            },
+          }
+        );
 
-    const response = await fetch(url, {
-      headers: {
-        Accept: "application/json",
-        "User-Agent": "Mozilla/5.0",
+        if (!response.ok) {
+          throw new Error(
+            `Substack respondió ${response.status} ${response.statusText}`
+          );
+        }
+
+        return response.json();
       },
-    });
-
-    if (!response.ok) {
-      throw new Error(
-        `Error al consultar Substack: ${response.status} ${response.statusText}`
-      );
-    }
-
-    const pagina = await response.json();
+      { offset, limit }
+    );
 
     if (!Array.isArray(pagina) || pagina.length === 0) {
       break;
@@ -47,13 +70,7 @@ async function obtenerPublicaciones() {
     }
   }
 
-  return publicaciones;
-}
-
-try {
-  const publicacionesSubstack = await obtenerPublicaciones();
-
-  const posts = publicacionesSubstack
+  const posts = publicaciones
     .filter((post) => post.title && (post.canonical_url || post.slug))
     .map((post) => ({
       title: post.title,
@@ -106,4 +123,6 @@ try {
   console.error("");
 
   process.exit(1);
+} finally {
+  await browser.close();
 }

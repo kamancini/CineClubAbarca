@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+  schedule:
+    - cron: "17,47 * * * *"
+
   workflow_dispatch:
 
 permissions:
@@ -36,6 +39,12 @@ jobs:
 
       - name: Instalar dependencias
         run: npm ci
+
+      - name: Instalar Chromium para Substack
+        run: npx playwright install chromium --with-deps
+
+      - name: Actualizar publicaciones de Substack
+        run: npm run sync:substack
 
       - name: Construir sitio
         run: npm run build
