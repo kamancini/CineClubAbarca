@@ -9,7 +9,7 @@
     "hora": "19:00 hrs",
     "lugar": "Hamburgo 36, Ñuñoa",
     "afiche": "/uploads/IMG_1065-2 (1).jpg",
-    "inscripcionAbierta": false
+    "inscripcionAbierta": true
   },
   {
     "id": "orlando",
