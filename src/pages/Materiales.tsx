@@ -14,7 +14,7 @@ const Materiales = () => (
         <div className="max-w-6xl mx-auto">
           <p className="eyebrow">Materiales</p>
 
-          <h1 className="font-serif text-5xl md:text-7xl text-paper mt-5">
+          <h1 className="font-serif text-5xl md:text-7xl text-paper mt-5 max-w-4xl leading-[1]">
             Para continuar la conversación
           </h1>
 
@@ -25,54 +25,56 @@ const Materiales = () => (
         </div>
       </section>
 
-      {/* Biblioteca */}
-      <section className="px-6 md:px-10 pb-24 md:pb-32">
+      {/* Biblioteca digital */}
+      <section className="px-6 md:px-10 pb-24 md:pb-36">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-12 gap-10 md:gap-0 items-center">
-            <div className="md:col-span-7">
+          <div className="grid grid-cols-1 md:grid-cols-[1.15fr_0.85fr] items-center">
+            {/* Imagen */}
+            <div className="relative">
               <img
                 src={publicUrl("/images/fanzine-encuentro.jpg")}
-                alt="Materiales de Cine Club Abarca"
-                className="w-full h-[430px] md:h-[620px] object-cover"
+                alt="Publicaciones y materiales compartidos durante una actividad de Cine Club Abarca"
+                className="w-full aspect-[4/3] md:aspect-[5/4] object-cover"
+                loading="lazy"
               />
             </div>
 
-            <div className="md:col-span-6 md:-ml-24 relative z-10">
-              <div className="paper-wrap paper-tilt-right">
-                <div className="paper-sheet paper-sheet-large">
-                  <p className="eyebrow">Biblioteca digital</p>
+            {/* Papel superpuesto */}
+            <div className="paper-wrap paper-tilt-right relative z-10 mt-[-2rem] md:mt-0 md:-ml-16">
+              <div className="paper-sheet paper-sheet-large">
+                <p className="eyebrow">Biblioteca digital</p>
 
-                  <h2 className="font-serif text-4xl md:text-5xl text-paper mt-4 leading-tight">
-                    Todos nuestros materiales en un solo lugar
-                  </h2>
+                <h2 className="font-serif text-4xl md:text-5xl text-paper mt-4 leading-tight">
+                  Todos nuestros materiales en un solo lugar
+                </h2>
 
-                  <p className="font-sans text-base text-muted-foreground mt-6 leading-relaxed">
-                    Puedes acceder a nuestra carpeta de Google Drive para
-                    consultar y descargar los materiales disponibles del Cine
-                    Club Abarca.
-                  </p>
+                <p className="font-sans text-base text-muted-foreground mt-6 leading-relaxed max-w-xl">
+                  Puedes acceder a nuestra carpeta de Google Drive para
+                  consultar y descargar los materiales disponibles del Cine
+                  Club Abarca.
+                </p>
 
-                  <a
-                    href="https://drive.google.com/drive/folders/1MiknBBE_hYdrKLfV8ydDCtJ0ZLBfsaYU?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 mt-8 bg-ochre text-ink px-7 py-4 font-sans text-[11px] tracking-[0.18em] uppercase hover:bg-ochre-soft transition-colors"
-                  >
-                    Explorar materiales
-                    <ExternalLink size={15} />
-                  </a>
+                <a
+                  href="https://drive.google.com/drive/folders/1MiknBBE_hYdrKLfV8ydDCtJ0ZLBfsaYU?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 mt-8 bg-ochre text-ink px-8 py-4 font-sans text-[11px] tracking-[0.2em] uppercase hover:bg-ochre-soft transition-colors"
+                >
+                  Explorar materiales
+                  <ExternalLink size={15} />
+                </a>
 
-                  <p className="font-sans text-xs text-muted-foreground mt-5">
-                    La carpeta se abrirá en una nueva pestaña de Google Drive.
-                  </p>
-                </div>
+                <p className="font-sans text-xs text-muted-foreground mt-4">
+                  La carpeta se abrirá en una nueva pestaña de Google Drive.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="bg-ochre h-10 md:h-14" />
+      {/* Cierre visual */}
+      <section className="bg-ochre h-10 md:h-14" />
     </main>
 
     <Footer />

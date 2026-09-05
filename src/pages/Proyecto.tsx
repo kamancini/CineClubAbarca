@@ -35,50 +35,60 @@ const Proyecto = () => (
         <div className="max-w-6xl mx-auto">
           <p className="eyebrow">El proyecto</p>
 
-          <h1 className="font-serif text-5xl md:text-7xl text-paper mt-5 max-w-4xl leading-[0.95]">
-            Un espacio de encuentro alrededor del cine
+          <h1 className="font-serif text-5xl md:text-7xl text-paper mt-5 max-w-4xl leading-[1]">
+            Una historia de cine, conversación y{" "}
+            <span className="italic text-ochre">encuentro</span>
           </h1>
+
+          <p className="font-sans text-lg md:text-xl text-muted-foreground mt-7 max-w-3xl leading-relaxed">
+            Cine Club Abarca es un espacio íntimo de encuentro en torno al cine,
+            diseñado para compartir opiniones, sensibilidades y vivencias
+            personales.
+          </p>
         </div>
       </section>
 
-      {/* Historia */}
-      <section className="px-6 md:px-10 pb-24 md:pb-32">
+      {/* Historia + imagen + papel */}
+      <section className="px-6 md:px-10 pb-24 md:pb-36">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-12 gap-10 md:gap-0 items-center">
-            <div className="md:col-span-7">
+          <div className="grid grid-cols-1 md:grid-cols-[1.05fr_0.95fr] items-center">
+            <div className="relative">
               <img
                 src={publicUrl("/images/proyecto-casa.jpg")}
-                alt="Casa Taller de Agustín Abarca"
-                className="w-full h-[450px] md:h-[650px] object-cover"
+                alt="Conversación en la entrada de la casa de Cine Club Abarca"
+                className="w-full aspect-[4/5] md:aspect-[4/5] object-cover"
+                loading="lazy"
               />
             </div>
 
-            <div className="md:col-span-6 md:-ml-24 relative z-10">
-              <div className="paper-wrap paper-tilt-right">
-                <div className="paper-sheet paper-sheet-large">
-                  <p className="eyebrow">Nuestra historia</p>
+            <div className="paper-wrap paper-tilt-right md:-ml-16 mt-[-2rem] md:mt-0 relative z-10">
+              <div className="paper-sheet paper-sheet-large">
+                <p className="eyebrow">Nuestra historia</p>
 
-                  <h2 className="font-serif text-4xl md:text-5xl text-paper mt-4">
-                    Una casa para encontrarnos
-                  </h2>
+                <h2 className="font-serif text-4xl md:text-5xl text-paper mt-4 leading-tight">
+                  Del encuentro doméstico al cineclub
+                </h2>
 
-                  <p className="font-sans text-base text-muted-foreground mt-6 leading-relaxed">
+                <div className="space-y-6 font-sans text-base text-muted-foreground leading-relaxed mt-8">
+                  <p>
                     Cine Club Abarca nace como un homenaje a la Casa Taller del
-                    pintor Agustín Abarca, un espacio que históricamente acogió
-                    tertulias en torno al arte, la literatura y la música.
+                    pintor Agustín Abarca, un espacio que durante años acogió
+                    tertulias y encuentros en torno al arte, la literatura y la
+                    música.
                   </p>
 
-                  <p className="font-sans text-base text-muted-foreground mt-5 leading-relaxed">
-                    Luego de años realizando cineclubes de manera informal, el
-                    proyecto se formaliza en 2025 como un espacio de encuentro
-                    comunitario alrededor del cine y la conversación.
+                  <p>
+                    Después de años de cineclubes informales y experiencias
+                    compartidas, la iniciativa se formalizó en 2025 con el
+                    propósito de continuar esa tradición de encuentro y abrir
+                    un espacio dedicado al cine y la conversación.
                   </p>
 
-                  <p className="font-sans text-base text-muted-foreground mt-5 leading-relaxed">
-                    Fue fundado por Rosa María Droguett Abarca, académica de
-                    Estética UC, y Cristóbal Ambroggio, productor audiovisual.
-                    Con el tiempo, el equipo se amplió para seguir construyendo
-                    colectivamente el proyecto.
+                  <p>
+                    El proyecto reúne seis años de trabajo colaborativo entre la
+                    investigación estética y la producción audiovisual,
+                    poniendo el cine al centro de una experiencia cercana y
+                    comunitaria.
                   </p>
                 </div>
               </div>
@@ -88,52 +98,53 @@ const Proyecto = () => (
       </section>
 
       {/* Qué hacemos */}
-      <section className="px-6 md:px-10 py-20 md:py-28">
+      <section className="px-6 md:px-10 py-24 md:py-36 bg-card">
         <div className="max-w-6xl mx-auto">
-          <p className="eyebrow">Qué hacemos</p>
+          <div className="max-w-3xl">
+            <p className="eyebrow">Qué hacemos</p>
 
-          <h2 className="font-serif text-4xl md:text-6xl text-paper mt-4 max-w-3xl">
-            Cine, conversación y comunidad
-          </h2>
+            <h2 className="font-serif text-4xl md:text-5xl text-paper mt-4">
+              Mediación cinematográfica y conversación
+            </h2>
+          </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-7 md:gap-8 mt-14">
             <div className="paper-wrap paper-tilt-left">
               <div className="paper-sheet h-full">
-                <h3 className="font-serif text-3xl text-paper">
+                <p className="font-serif text-3xl text-paper">
                   Ciclos temáticos
-                </h3>
+                </p>
 
                 <p className="font-sans text-sm text-muted-foreground mt-5 leading-relaxed">
-                  Realizamos ciclos temáticos con funciones guiadas que
-                  permiten profundizar en las películas y compartir distintas
-                  formas de verlas.
+                  Organizamos ciclos con funciones guiadas que utilizan cada
+                  película como punto de partida para conversar y compartir
+                  distintas miradas.
                 </p>
               </div>
             </div>
 
-            <div className="paper-wrap paper-tilt-right">
+            <div className="paper-wrap paper-tilt-right md:mt-8">
               <div className="paper-sheet h-full">
-                <h3 className="font-serif text-3xl text-paper">
-                  Conversación
-                </h3>
+                <p className="font-serif text-3xl text-paper">
+                  Comunidad
+                </p>
 
                 <p className="font-sans text-sm text-muted-foreground mt-5 leading-relaxed">
-                  Buscamos crear un espacio seguro, cercano y acogedor para
-                  compartir opiniones, sensibilidades y vivencias personales.
+                  Parte de la programación se construye a partir de películas
+                  sugeridas por quienes participan del cineclub.
                 </p>
               </div>
             </div>
 
             <div className="paper-wrap paper-tilt-left">
               <div className="paper-sheet h-full">
-                <h3 className="font-serif text-3xl text-paper">
-                  Lectura y comunidad
-                </h3>
+                <p className="font-serif text-3xl text-paper">
+                  Cine y literatura
+                </p>
 
                 <p className="font-sans text-sm text-muted-foreground mt-5 leading-relaxed">
-                  La programación puede surgir de propuestas de la comunidad y
-                  de adaptaciones de obras literarias leídas y comentadas
-                  colectivamente.
+                  También leemos y comentamos obras literarias antes de
+                  encontrarnos con sus adaptaciones cinematográficas.
                 </p>
               </div>
             </div>
@@ -142,15 +153,15 @@ const Proyecto = () => (
       </section>
 
       {/* Equipo */}
-      <section className="px-6 md:px-10 py-20 md:py-28">
+      <section className="px-6 md:px-10 py-24 md:py-36">
         <div className="max-w-6xl mx-auto">
-          <p className="eyebrow">Equipo</p>
+          <p className="eyebrow">Quiénes somos</p>
 
-          <h2 className="font-serif text-4xl md:text-6xl text-paper mt-4">
-            Quienes hacemos Cine Club Abarca
+          <h2 className="font-serif text-4xl md:text-5xl text-paper mt-4">
+            El equipo
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-8 mt-14">
             {equipo.map((persona, index) => (
               <div
                 key={persona.nombre}
@@ -161,11 +172,11 @@ const Proyecto = () => (
                 }`}
               >
                 <div className="paper-sheet h-full">
-                  <h3 className="font-serif text-2xl md:text-3xl text-paper">
+                  <p className="font-serif text-3xl text-paper leading-tight">
                     {persona.nombre}
-                  </h3>
+                  </p>
 
-                  <p className="font-sans text-sm text-muted-foreground mt-4 leading-relaxed">
+                  <p className="font-sans text-sm text-muted-foreground mt-4">
                     {persona.rol}
                   </p>
                 </div>
@@ -175,39 +186,44 @@ const Proyecto = () => (
         </div>
       </section>
 
-      {/* Propósito */}
-      <section className="bg-ochre px-6 md:px-10 py-20 md:py-24">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-          <div>
-            <p className="font-sans text-xs uppercase tracking-[0.18em] text-ink/70">
-              Nuestro propósito
-            </p>
+      {/* Propósito y público */}
+      <section className="bg-ochre px-6 md:px-10 py-24 md:py-32">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+            <div>
+              <p className="font-sans text-xs uppercase tracking-[0.18em] text-ink/70">
+                Propósito
+              </p>
 
-            <h2 className="font-serif text-4xl md:text-5xl text-ink mt-4 leading-tight">
-              Fortalecer el tejido comunitario
-            </h2>
+              <h2 className="font-serif text-4xl md:text-5xl text-ink mt-4 leading-tight">
+                Fortalecer el tejido comunitario
+              </h2>
 
-            <p className="font-sans text-base text-ink/75 mt-6 leading-relaxed">
-              Buscamos fortalecer el tejido comunitario a través de un espacio
-              seguro, acogedor y gratuito, recuperando el encuentro presencial
-              alrededor de intereses compartidos.
-            </p>
-          </div>
+              <p className="font-sans text-base text-ink/80 mt-6 leading-relaxed">
+                Buscamos ofrecer un espacio seguro, acogedor y gratuito que
+                reivindique los encuentros presenciales en torno a intereses
+                compartidos, utilizando el cine y la conversación como punto de
+                partida para conectar con otras personas.
+              </p>
+            </div>
 
-          <div>
-            <p className="font-sans text-xs uppercase tracking-[0.18em] text-ink/70">
-              A quién está dirigido
-            </p>
+            <div>
+              <p className="font-sans text-xs uppercase tracking-[0.18em] text-ink/70">
+                Para quién
+              </p>
 
-            <h2 className="font-serif text-4xl md:text-5xl text-ink mt-4 leading-tight">
-              Personas que quieren profundizar su experiencia del cine
-            </h2>
+              <h2 className="font-serif text-4xl md:text-5xl text-ink mt-4 leading-tight">
+                Una comunidad abierta al cine
+              </h2>
 
-            <p className="font-sans text-base text-ink/75 mt-6 leading-relaxed">
-              Cine Club Abarca está dirigido a personas entre 18 y 65 años
-              interesadas en profundizar su experiencia cinematográfica y
-              participar en conversaciones honestas alrededor de las películas.
-            </p>
+              <p className="font-sans text-base text-ink/80 mt-6 leading-relaxed">
+                El proyecto está dirigido principalmente a personas entre 18 y
+                65 años interesadas en profundizar su experiencia
+                cinematográfica y participar en conversaciones honestas sobre
+                los temas, emociones y experiencias que el cine nos invita a
+                explorar.
+              </p>
+            </div>
           </div>
         </div>
       </section>
