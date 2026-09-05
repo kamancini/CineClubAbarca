@@ -8,8 +8,12 @@ import Materiales from "./pages/Materiales";
 import Contacto from "./pages/Contacto";
 import NotFound from "./pages/NotFound";
 
+import ScrollToTop from "./components/ScrollToTop";
+
 const App = () => (
   <BrowserRouter>
+    <ScrollToTop />
+
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/proyecto" element={<Proyecto />} />

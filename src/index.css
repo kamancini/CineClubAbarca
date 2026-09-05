@@ -580,3 +580,24 @@ h3 {
     right: -9px;
   }
 }
+
+/* --------------------------------
+   TEXTURA DE PAPEL
+-------------------------------- */
+
+.paper-sheet,
+.cinema-ticket,
+.cinema-ticket-action {
+  background-color: #f2e7d6;
+  background-image:
+    linear-gradient(
+      rgba(242, 231, 214, 0.75),
+      rgba(242, 231, 214, 0.75)
+    ),
+    url("/images/paper-texture.png");
+
+  background-repeat: repeat, repeat;
+  background-size: auto, 700px auto;
+  background-position: center, center;
+  background-blend-mode: normal, multiply;
+}
