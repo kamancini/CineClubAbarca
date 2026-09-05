@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { ExternalLink } from "lucide-react";
 
 import Header from "../components/Header";
@@ -11,32 +10,29 @@ interface Ensayo {
   link: string;
   date: string;
   excerpt: string;
+  image?: string;
 }
+
+const formatearFecha = (fecha: string) => {
+  if (!fecha) {
+    return "";
+  }
+
+  const date = new Date(fecha);
+
+  if (Number.isNaN(date.getTime())) {
+    return "";
+  }
+
+  return new Intl.DateTimeFormat("es-CL", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  }).format(date);
+};
 
 const Ensayos = () => {
   const publicaciones = ensayos as Ensayo[];
-
-  useEffect(() => {
-    const scriptAnterior = document.querySelector(
-      'script[src="https://substack.com/embedjs/embed.js"]'
-    );
-
-    if (scriptAnterior) {
-      scriptAnterior.remove();
-    }
-
-    const script = document.createElement("script");
-
-    script.src = "https://substack.com/embedjs/embed.js";
-    script.async = true;
-    script.charset = "utf-8";
-
-    document.body.appendChild(script);
-
-    return () => {
-      script.remove();
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -46,7 +42,9 @@ const Ensayos = () => {
         {/* Encabezado */}
         <section className="px-6 md:px-10 py-20 md:py-28">
           <div className="max-w-6xl mx-auto">
-            <p className="eyebrow">Textos y reflexiones</p>
+            <p className="eyebrow">
+              Textos y reflexiones
+            </p>
 
             <h1 className="font-serif text-5xl md:text-7xl text-paper mt-5">
               Ensayos
@@ -76,29 +74,77 @@ const Ensayos = () => {
                 </div>
               </div>
             ) : (
-              <div className="substack-grid">
-                {publicaciones.map((ensayo) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+                {publicaciones.map((ensayo, index) => (
                   <article
                     key={ensayo.link}
-                    className="substack-card"
+                    className={`paper-wrap h-full ${
+                      index % 2 === 0
+                        ? "paper-tilt-left"
+                        : "paper-tilt-right"
+                    }`}
                   >
-                    <div className="substack-post-embed">
-                      <p lang="es">
-                        {ensayo.title} por Cine Club Abarca
-                      </p>
+                    <div className="paper-sheet h-full flex flex-col">
+                      {/* Imagen */}
+                      {ensayo.image && (
+                        <a
+                          href={ensayo.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block mb-6"
+                        >
+                          <img
+                            src={ensayo.image}
+                            alt=""
+                            className="w-full aspect-[4/3] object-cover"
+                            loading="lazy"
+                          />
+                        </a>
+                      )}
 
+                      {/* Metadatos */}
+                      <div className="flex items-center flex-wrap gap-x-2 gap-y-1">
+                        <p className="font-sans text-[10px] uppercase tracking-[0.18em] text-ochre">
+                          Cine Club Abarca
+                        </p>
+
+                        {ensayo.date && (
+                          <>
+                            <span className="text-muted-foreground text-xs">
+                              ·
+                            </span>
+
+                            <p className="font-sans text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+                              {formatearFecha(ensayo.date)}
+                            </p>
+                          </>
+                        )}
+                      </div>
+
+                      {/* Título */}
+                      <h2 className="font-serif text-3xl md:text-4xl text-paper leading-[1.05] mt-4">
+                        {ensayo.title}
+                      </h2>
+
+                      {/* Extracto */}
                       {ensayo.excerpt && (
-                        <p>
+                        <p className="font-sans text-sm text-muted-foreground leading-relaxed mt-5">
                           {ensayo.excerpt}
                         </p>
                       )}
 
-                      <a
-                        data-post-link=""
-                        href={ensayo.link}
-                      >
-                        Leer en Substack
-                      </a>
+                      {/* Botón */}
+                      <div className="mt-auto pt-8">
+                        <a
+                          href={ensayo.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 bg-ochre text-ink px-5 py-3 font-sans text-[10px] uppercase tracking-[0.16em] hover:bg-ochre-soft transition-colors"
+                        >
+                          Leer en Substack
+                          <ExternalLink size={14} />
+                        </a>
+                      </div>
                     </div>
                   </article>
                 ))}

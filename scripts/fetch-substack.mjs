@@ -32,13 +32,13 @@ const normalizarUrl = (url) => {
 };
 
 const tituloValido = (texto = "") => {
-  const t = limpiarTexto(texto);
+  const titulo = limpiarTexto(texto);
 
-  if (t.length < 4 || t.length > 220) {
+  if (titulo.length < 4 || titulo.length > 220) {
     return false;
   }
 
-  const genericos = [
+  const textosGenericos = [
     "leer más",
     "leer en substack",
     "read more",
@@ -49,7 +49,7 @@ const tituloValido = (texto = "") => {
     "compartir",
   ];
 
-  return !genericos.includes(t.toLowerCase());
+  return !textosGenericos.includes(titulo.toLowerCase());
 };
 
 const browser = await chromium.launch({
@@ -67,7 +67,7 @@ try {
 
   /*
    * 1. Abrimos el archivo público de Substack.
-   * NO usamos /api/v1/archive.
+   * No utilizamos /api/v1/archive porque GitHub recibe 403.
    */
   const archivePage = await context.newPage();
 
@@ -81,8 +81,8 @@ try {
   await archivePage.waitForTimeout(2500);
 
   /*
-   * 2. Hacemos scroll para que Substack cargue las publicaciones
-   * que estén más abajo en el archivo.
+   * 2. Hacemos scroll para cargar todas las publicaciones
+   * disponibles en la página de archivo.
    */
   let alturaAnterior = 0;
   let sinCambios = 0;
@@ -119,8 +119,8 @@ try {
   }
 
   /*
-   * 3. Recogemos todos los enlaces públicos /p/ que aparecen
-   * en el archivo.
+   * 3. Recogemos todos los enlaces /p/ presentes
+   * en el archivo público.
    */
   const enlacesEncontrados = await archivePage.evaluate(() =>
     Array.from(document.querySelectorAll('a[href*="/p/"]')).map(
@@ -171,8 +171,8 @@ try {
   }
 
   /*
-   * 4. Visitamos cada artículo público para obtener título,
-   * descripción y fecha desde sus metadatos HTML.
+   * 4. Abrimos cada publicación y obtenemos sus metadatos:
+   * título, descripción, fecha e imagen.
    */
   const posts = [];
 
@@ -186,8 +186,8 @@ try {
     const page = await context.newPage();
 
     /*
-     * No necesitamos descargar imágenes, videos o fuentes para
-     * leer los metadatos del artículo.
+     * No necesitamos descargar imágenes, videos ni fuentes
+     * para leer los metadatos HTML.
      */
     await page.route("**/*", async (route) => {
       const tipo = route.request().resourceType();
@@ -239,10 +239,16 @@ try {
             ?.getAttribute("datetime") ||
           "";
 
+        const imagen =
+          meta('meta[property="og:image"]') ||
+          meta('meta[name="twitter:image"]') ||
+          "";
+
         return {
           titulo,
           descripcion,
           fecha,
+          imagen,
         };
       });
 
@@ -260,6 +266,7 @@ try {
         link: publicacion.link,
         date: metadata.fecha || "",
         excerpt: limpiarTexto(metadata.descripcion).slice(0, 280),
+        image: metadata.imagen || "",
         ordenOriginal: i,
       });
     } catch (error) {
@@ -277,6 +284,7 @@ try {
         link: publicacion.link,
         date: "",
         excerpt: "",
+        image: "",
         ordenOriginal: i,
       });
     } finally {
@@ -285,9 +293,7 @@ try {
   }
 
   /*
-   * 5. Ordenamos del artículo más nuevo al más antiguo.
-   * Si alguna publicación no tiene fecha, conservamos el orden
-   * en que apareció en el archivo.
+   * 5. Ordenamos de más reciente a más antiguo.
    */
   posts.sort((a, b) => {
     const fechaA = a.date
@@ -309,6 +315,9 @@ try {
     ({ ordenOriginal, ...post }) => post
   );
 
+  /*
+   * 6. Guardamos los datos que leerá React.
+   */
   await fs.mkdir("src/data", {
     recursive: true,
   });
@@ -331,34 +340,24 @@ try {
 
   await context.close();
 } catch (error) {
-  /*
-   * Muy importante:
-   *
-   * Si algún día Substack está caído o cambia temporalmente
-   * su página, NO queremos que eso impida publicar todo
-   * Cine Club Abarca en GitHub Pages.
-   *
-   * Si ensayos.json ya existe, conservamos la última versión.
-   */
   console.error("");
   console.error("No se pudo actualizar Substack.");
   console.error(error);
   console.error("");
 
+  /*
+   * Si Substack falla temporalmente, conservamos ensayos.json
+   * para que GitHub Pages pueda seguir publicando el sitio.
+   */
   try {
     await fs.access(outputFile);
 
     console.warn(
       "Se conservará la última versión de ensayos.json."
     );
-
-    /*
-     * No hacemos process.exit(1).
-     * De esta manera GitHub Pages puede seguir desplegándose.
-     */
   } catch {
     console.error(
-      "Además, no existe una copia anterior de ensayos.json."
+      "No existe una copia anterior de ensayos.json."
     );
 
     process.exitCode = 1;
