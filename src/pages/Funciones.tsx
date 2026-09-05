@@ -1,18 +1,18 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { funciones } from "../data/funciones";
+import { publicUrl } from "../lib/publicUrl";
 
 const Funciones = () => (
   <div className="min-h-screen bg-background">
     <Header />
 
     <main>
-      {/* Encabezado */}
       <section className="px-6 md:px-10 py-20 md:py-28">
         <div className="max-w-6xl mx-auto">
           <div className="relative">
             <img
-              src="/images/funcion-cine.jpg"
+              src={publicUrl("/images/funcion-cine.jpg")}
               alt="Público durante una función de Cine Club Abarca"
               className="w-full h-[420px] md:h-[560px] object-cover"
             />
@@ -42,10 +42,8 @@ const Funciones = () => (
         </div>
       </section>
 
-      {/* Programación */}
       <section className="px-6 md:px-10 pb-24 md:pb-32">
         <div className="max-w-6xl mx-auto">
-          {/* Subtítulo */}
           <div className="mb-12 md:mb-16">
             <p className="eyebrow">Programación</p>
 
@@ -73,11 +71,10 @@ const Funciones = () => (
                   key={funcion.id}
                   className="cinema-ticket max-w-[1020px] mx-auto"
                 >
-                  {/* Afiche */}
                   <div className="cinema-ticket-poster">
                     {funcion.afiche ? (
                       <img
-                        src={funcion.afiche}
+                        src={publicUrl(funcion.afiche)}
                         alt={`Afiche de ${funcion.titulo}`}
                         loading="lazy"
                       />
@@ -90,7 +87,6 @@ const Funciones = () => (
                     )}
                   </div>
 
-                  {/* Información */}
                   <div className="cinema-ticket-info">
                     <div>
                       <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-ochre">
@@ -106,30 +102,20 @@ const Funciones = () => (
                       </p>
                     </div>
 
-                    {/* Datos */}
                     <div className="cinema-ticket-details">
                       <div>
                         <p className="ticket-label">Fecha</p>
-
-                        <p className="ticket-value">
-                          {funcion.fecha}
-                        </p>
+                        <p className="ticket-value">{funcion.fecha}</p>
                       </div>
 
                       <div>
                         <p className="ticket-label">Hora</p>
-
-                        <p className="ticket-value">
-                          {funcion.hora} h
-                        </p>
+                        <p className="ticket-value">{funcion.hora} h</p>
                       </div>
 
                       <div>
                         <p className="ticket-label">Lugar</p>
-
-                        <p className="ticket-value">
-                          {funcion.lugar}
-                        </p>
+                        <p className="ticket-value">{funcion.lugar}</p>
                       </div>
                     </div>
 
@@ -140,7 +126,6 @@ const Funciones = () => (
                     )}
                   </div>
 
-                  {/* Talón de inscripción */}
                   <div className="cinema-ticket-action">
                     <p className="font-sans text-[10px] uppercase tracking-[0.18em] text-muted-foreground text-center">
                       Cupos limitados
@@ -168,7 +153,6 @@ const Funciones = () => (
         </div>
       </section>
 
-      {/* Proponer película */}
       <section className="bg-ochre px-6 md:px-10 py-14 md:py-16">
         <div className="max-w-6xl mx-auto">
           <p className="font-sans text-sm text-ink/80 max-w-2xl">

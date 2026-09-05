@@ -10,8 +10,13 @@ import NotFound from "./pages/NotFound";
 
 import ScrollToTop from "./components/ScrollToTop";
 
+const basename =
+  import.meta.env.BASE_URL === "/"
+    ? undefined
+    : import.meta.env.BASE_URL.replace(/\/$/, "");
+
 const App = () => (
-  <BrowserRouter>
+  <BrowserRouter basename={basename}>
     <ScrollToTop />
 
     <Routes>
